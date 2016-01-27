@@ -10,7 +10,7 @@ def binary_to_decimal(num):
 def binary_checker(string):
 	for x in string:
 		if x != "1" and x != "0":
-			print "You entered an invalid Binary Number.\n"
+			print "You entered an invalid Binary Number."
 			return False
 	return True
 
@@ -56,38 +56,38 @@ while does_continue == "yes" or does_continue == "y":
 
 	# perform the conversion from binary to decimal or vice versa
 	if perform == "convert":
-		convert_continue = 0
-		while convert_continue == 0:
+		convert_continue = "y"
+		while convert_continue == "y" or convert_continue == "yes":
 			which_conversion = raw_input("Is your input binary or decimal?")
 			# if the user wants to convert from binary into decimal
 			if which_conversion == "binary":
 				binary_continue = 0
 				while binary_continue == 0:
-					binary_num = raw_input("Enter your number: ")
+					binary_num = raw_input("\nEnter your number: ")
 					if binary_checker(binary_num):
 						print "Your number in decimal is: " + str(binary_to_decimal(binary_num))
-						convert_continue = 1
 						binary_continue = 1
-						does_continue = raw_input("Do you wish to continue: yes(y) or no(n)?")
+						convert_continue = raw_input("\nDo you wish to continue converting: yes(y) or no(n)?")
 			#if the user wants to convert a decimal into a binary string
 			elif which_conversion == "decimal":
-				decimal_num = raw_input("Enter your number: ")
+				decimal_num = raw_input("\nEnter your number: ")
 				binary_num = decimal_to_binary(decimal_num)
 				print "Your number in binary is: " + str(binary_num)
-				convert_continue = 1
-				does_continue = raw_input("Do you wish to continue: yes(y) or no(n)?")
+				convert_continue = raw_input("\nDo you wish to continue converting: yes(y) or no(n)?")
 			# else, print error message if invlaid input
 			else:
 				print "You entered an invalid option \n"
-
+		does_continue = raw_input("Do you want to keep using this calculator: yes(y) or no(n)?")
+		if does_continue == "n" or convert_continue == "no":
+			print "Finished!"
 	
 	# perform computation given binary numbers
 	# currently only able to handle single equations per calculation
 	elif perform == "calculate":
 		print "\nPerform any +, -, *, /, <<, or >> operations for two binary values"
 		result = 0
-		keep_prompting = 1
-		while keep_prompting == 1:
+		keep_prompting = 'y'
+		while keep_prompting == 'y' or keep_prompting == "yes":
 			_error = 0
 			user_equation = raw_input("Please enter Binary Equation to compute: ")
 			user_equation = user_equation.split()
@@ -114,9 +114,11 @@ while does_continue == "yes" or does_continue == "y":
 				result = perform_calculation(updated_equation)
 				result = str(bin(result))
 				print "Your equation: " + user_equation[0] + " " + user_equation[1] + " " + user_equation[2] + " = " + result[2:]
-				does_continue = raw_input("\nDo you wish to continue solving equations: yes(y) or no(n)?")
-				if does_continue == "n" or does_continue == "no":
-					keep_prompting = 0
+				keep_prompting = raw_input("\nDo you wish to continue solving equations: yes(y) or no(n)?")
+				
+		does_continue = raw_input("Do you want to keep using this calculator: yes(y) or no(n)?")
+		if does_continue == "n" or convert_continue == "no":
+			print "Finished!"
 
 	# else return an error message on wrong input
 	else:
