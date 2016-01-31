@@ -117,7 +117,7 @@ while does_continue == "yes" or does_continue == "y":
 				keep_prompting = raw_input("\nDo you wish to continue solving equations: yes(y) or no(n)?")
 				
 		does_continue = raw_input("Do you want to keep using this calculator: yes(y) or no(n)?")
-		if does_continue == "n" or convert_continue == "no":
+		if does_continue == "n" or does_continue == "no":
 			print "Finished!"
 
 	# else return an error message on wrong input
